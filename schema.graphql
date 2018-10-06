@@ -1,0 +1,32 @@
+schema {
+  query:RootQueryType
+  mutation:RootMutationType
+}
+
+type RootMutationType {
+  readGpio(pin_id: String!): Pin
+  readRaspberry: Raspberry
+}
+
+type RootMutationType {
+  createGpio(input: PinInput): Pin
+  updateGpio(pin_id: String!, input: PinInput): Pin
+  deleteGpio(pin_id: String!): Pin
+}
+
+type Raspberry {
+  gpios: [Pin]
+}
+
+type Pin {
+  pin_bcm : String
+  pin_gpio : String
+  pin_id : String!
+  pin_name : String
+}
+
+input PinInput {
+  pin_bcm : String
+  pin_gpio : String
+  pin_name : String
+}  
